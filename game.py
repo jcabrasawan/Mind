@@ -1,22 +1,25 @@
 from player import player
+import world
 
 def play():
-    print("Escape from Cave Terror!")
+    print("understand.")
     player = Player()
     while True:
-        action_input= get_playrt_command()
+        room = world.tile_at(player.x, player.y)
+        print(room.intro_text())
+        action_input= get_player_command()
         if action_input in ["n","N","North","north"]
-            print("Northward Ho!")
+            player.move_north()
         elif action_input in ["s","S","South","south"]
-            print("South, Baby!")
+            player.move_south()
         elif action_input in ["w","W","West","west"]
-            print("West of the Word, Lets Go!")
+            player.move_west()
         elif action_input in ["e","E","East","east"]
-            print("East.")
+            player.move_east()
         elif action_input in ['i', 'I', 'inventory']:
             player.print_inventory()
         else:
-            print("Can't do that yet, bub.")
+            print("#h!ST&%)A{!Y#! %A&b(*WA&##Y$!r#@ ")
 
 def get_player_command():
     return input('Action: ')
