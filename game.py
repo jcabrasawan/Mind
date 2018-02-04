@@ -19,7 +19,7 @@ def play():
         elif action_input in ['i', 'I', 'inventory']:
             player.print_inventory()
         else:
-            print("#h!ST&%)A{!Y#! %A&b(*WA&##Y$!r#@ ")
+            print("#h!ST%)A{!Y#! %A&b(*WA&##Y$!r#@ ")
 
 def get_player_command():
     return input('Action: ')
