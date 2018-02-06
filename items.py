@@ -1,64 +1,40 @@
-class Weapon:
+class Item:
     def __init__(self):
         raise NotImplementedError("Do not create raw Weapon objects.")
 
     def __repr__(self):
         return self.name
 
-class Rock(Weapon):
+class Book(Item):
     def __init__(self):
-        self.name= "Rock"
-        self.description= "A fist sized rock, suitable for bludgeoning"
-        self.damage= 5
+        self.name= "Book"
+        self.description= "The title seems familiar, but you can't quite place it."\
+                          "It looks a bit dry."
+    def __str__(self):
+        return self.description
+
+class Table(Item):
+    def __init__(self):
+        self.name= "A reading table."
+        self.description = "A dusty old table."\
+                           "It looks worn down."
     def __str__(self):
         return self.description
     
-#    def __repr__(self):
-#        return self.name
-
-class Dagger(Weapon):
+class Chair(Item):
     def __init__(self):
-        self.name= "Dagger"
-        self.description = "A small dagger with some rust. " \
-                           "Somewhat more dangerous than a rock."
-        self.damage = 10
+        self.name = "An uncomfortable chair."
+        self.description = "This chair looks stiff and uncomfortable."\
+                           "You doubt it can take your weight and decide not to attempt"\
+                           "sitting on it."
     def __str__(self):
         return self.description
 
-#    def __repr__(self):
-#       return self.name
-
-class RustySword(Weapon):
-    def __init__(self):
-        self.name = "Rusty Sword"
-        self.description = "This sword is showing its age, " \
-                           "but still has some fight in it."
-        self.damage = 20
-
-    def __str__(self):
-        return self.description
-
-#    def __repr__(self):
-#        return self.name
-
-inventory = [Rock(), RustySword(), "Gold(5)", 'Crusty Bread']
+inventory = ['Nothing']
 
 def play():
-    print('Escape from Cave Terror!')
-    print(inventory)
-
-def most_powerful_weapon(inventory):
-    max_damage = 0
-    best_weapon = None
-    for item in inventory:
-        try:
-            if item.damage > max_damage:
-                best_weapon = item
-                max_damage = item.damage
-        except AttributeError:
-            pass
-
-    return best_weapon
+    print('understand.')
+    print("INVENTORY: ")
+    print (inventory)
 
 play()
-print('Your best weapon is: '+ repr(most_powerful_weapon(inventory)))
