@@ -75,19 +75,78 @@ class DustTile(MapTile):
         There is a large pile of dust against this wall. You feel strangely morose.
         '''
 
-world_map = [
-    [DustTile() , KnifeWallTile() , WallTile() , WallTile(), KnifeWallTile() , WallTile()]
-    [WallTile() , NothingTile() , LampTile() , TableTile() , NothingTile() , WallTile()]
-    [DustTile(), NothingTile(), NothingTile(), NothingTile(), NothingTile(), DustTile()]
-    [WallTile(), NothingTile(), StartTile(), NothingTile(), NothingTile(), ChairTile()]
-    [ShelfTile(), WallTile(), WallTile(), DustTile(), WallTile(), KnifeWallTile()]
-]
+class World:
+    map = [
+        [DustTile(),   KnifeWallTile(),  WallTile(),   WallTile(),  KnifeWallTile(),    WallTile()]
+        [WallTile(),   NothingTile() ,   LampTile(),   TableTile(), NothingTile(),      WallTile()]
+        [DustTile(),    NothingTile(),  NothingTile(),  NothingTile(),  NothingTile(),  DustTile()]
+        [WallTile(),    NothingTile(),  StartTile(),    NothingTile(),  NothingTile(),  ChairTile()]
+        [ShelfTile(),   WallTile(),     WallTile(),     DustTile(),     WallTile(),     KnifeWallTile()]
+    ]
 
-def tile_at(x,y):
-    if x<0 or y<0:
-        return None
-    try:
-        return world_map[y][x]
-    except IndexError:
-        return None
-    
+    def __init__(self):
+		for i in range(len(self.map)):			# We want to set the x, y coordinates for each tile so that it "knows" where it is in the map.
+			for j in range(len(self.map[i])):	# I prefer to handle this automatically so there is no chance that the map index does not match
+				if(self.map[i][j]):				# the tile's internal coordinates.
+					self.map[i][j].x = j
+					self.map[i][j].y = i
+					
+	def tile_at(self, x, y):
+		if x < 0 or y < 0:
+			return None
+		try:
+			return self.map[y][x]
+		except IndexError:
+			return None
+			
+	def check_north(self, x, y):
+		if y-1 < 0:
+			room = None
+		try:
+			room = self.map[y-1][x]
+		except IndexError:
+			room = None
+		
+		if(room):
+			return [True, "You head to the north."]
+		else:
+			return [False, "There doesn't seem to be anything to the north."]
+			
+	def check_south(self, x, y):
+		if y+1 < 0:
+			room = None
+		try:
+			room = self.map[y+1][x]
+		except IndexError:
+			room = None
+		
+		if(room):
+			return [True, "You head to the south."]
+		else:
+			return [False, "There doesn't seem to be anything to the south."]
+
+	def check_west(self, x, y):
+		if x-1 < 0:
+			room = None
+		try:
+			room = self.map[y][x-1]
+		except IndexError:
+			room = None
+		
+		if(room):
+			return [True, "You head to the west."]
+		else:
+			return [False, "There doesn't seem to be anything to the west."]
+			
+	def check_east(self, x, y):
+		if x+1 < 0:
+			room = None
+		try:
+			room = self.map[y][x+1]
+		except IndexError:
+			room = None
+		
+		if(room):
+			return [True, "You head to the east."]
+		else:
+			return [False, "There doesn't seem to be anything to the east."]

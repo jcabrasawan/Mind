@@ -2,7 +2,7 @@ import items
 
 class Player:
     def __init__(self):
-        self.x = 2
+        self.x = 4
         self.y = 3
 
     def move(self, dx, dy):
