@@ -6,8 +6,8 @@ from terminalsize import get_terminal_size		# Allows us to determine terminal wi
 												# Adapted for Python 3.x from https://gist.github.com/jtriley/1108174
 
 from player import Player
-from world import World
-import parse
+from gamemap import World
+import parser
 
 debug_mode = True
 
