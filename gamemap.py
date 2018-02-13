@@ -64,10 +64,8 @@ class KnifeWallTile(MapTile):
     
 class NothingTile(MapTile):
     def intro_text(self):
-        return '''
-        There's a thick layer of dust on the ground. It reminds you morbidly of
-        ash.
-        '''
+        return "There's a thick layer of dust on the ground. It reminds you morbidly of ash."
+
 
 class DustTile(MapTile):
     def intro_text(self):

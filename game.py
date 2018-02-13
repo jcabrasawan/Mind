@@ -1,6 +1,7 @@
 from random import randint 	# Used to generate random integers.
 
 from textwrap import fill	# Gives us a tool for formatting text in a much prettier fashion.
+from textwrap import dedent
 
 from terminalsize import get_terminal_size		# Allows us to determine terminal window size on any OS.
 												# Adapted for Python 3.x from https://gist.github.com/jtriley/1108174
@@ -40,7 +41,7 @@ def clear_screen():
 
 def print_wrap(text):
     get_width()
-    text = text.replace("\t", "")
+    text = dedent(text)#.replace("\t", "")
     print(fill(text, wrap_width))
 
 def play():
@@ -51,7 +52,7 @@ def play():
     print_wrap(world.tile_at(player.x,player.y).intro_text())
     while True:
         print("")							# Print a blank line for spacing purposes.
-        [raw_input, parsed_input] = parse.get_command()
+        [raw_input, parsed_input] = parser.get_command()
         print("")							# Print a blank line for spacing purposes.
 
         if(parsed_input):
@@ -64,63 +65,63 @@ def play():
                     exit()
                 else:
                     print("I don't understand what you are trying to do. Please try again.")
-        elif(len(parsed_input) == 2):
-            if(parsed_input[0] == "go"):													### Command "go"
-                move_status = False
-                if(parsed_input[1] == "north"):
-                    [move_status, move_description] = world.check_north(player.x, player.y)
-                    print_wrap(move_description)
-                    if(move_status):
-                        player.move_north()
-                elif(parsed_input[1] == "south"):
-                    [move_status, move_description] = world.check_south(player.x, player.y)
-                    print_wrap(move_description)
-                    if(move_status):
-                        player.move_south()
-                elif(parsed_input[1] == "east"):
-                    [move_status, move_description] = world.check_east(player.x, player.y)
-                    print_wrap(move_description)
-                    if(move_status):
-                        player.move_east()
-                elif(parsed_input[1] == "west"):
-                    [move_status, move_description] = world.check_west(player.x, player.y)
-                    print_wrap(move_description)
-                    if(move_status):
-                        player.move_west()		
+            elif(len(parsed_input) == 2):
+                if(parsed_input[0] == "go"):													### Command "go"
+                    move_status = False
+                    if(parsed_input[1] == "north"):
+                        [move_status, move_description] = world.check_north(player.x, player.y)
+                        print_wrap(move_description)
+                        if(move_status):
+                            player.move_north()
+                    elif(parsed_input[1] == "south"):
+                        [move_status, move_description] = world.check_south(player.x, player.y)
+                        print_wrap(move_description)
+                        if(move_status):
+                            player.move_south()
+                    elif(parsed_input[1] == "east"):
+                        [move_status, move_description] = world.check_east(player.x, player.y)
+                        print_wrap(move_description)
+                        if(move_status):
+                            player.move_east()
+                    elif(parsed_input[1] == "west"):
+                        [move_status, move_description] = world.check_west(player.x, player.y)
+                        print_wrap(move_description)
+                        if(move_status):
+                            player.move_west()		
+                    else:
+                        print("I don't understand where you're trying to go.")
+
+
+                    if(move_status):		# If we have successfully moved, give the player the new location's description.
+                        print_wrap(world.tile_at(player.x,player.y).intro_text())
+
+
+
+                elif(parsed_input[0] == "check"):													### Command "check"
+                    if(parsed_input[1] == "inventory"):
+                        player.print_inventory()
+                    elif(parsed_input[1] == "around"):
+                        print_wrap(world.tile_at(player.x,player.y).intro_text())
+                    else:
+                        print("I don't know what you're trying to look at.")
+        
                 else:
-                    print("I don't understand where you're trying to go.")
-
-
-                if(move_status):		# If we have successfully moved, give the player the new location's description.
-                    print_wrap(world.tile_at(player.x,player.y).intro_text())
-
-
-
-            elif(parsed_input[0] == "check"):													### Command "check"
-                if(parsed_input[1] == "inventory"):
-                    player.print_inventory()
-                elif(parsed_input[1] == "around"):
-                    print_wrap(world.tile_at(player.x,player.y).intro_text())
-                else:
-                    print("I don't know what you're trying to look at.")
-    
+                    print("I don't understand what you are trying to do. Please try again.")
             else:
                 print("I don't understand what you are trying to do. Please try again.")
-        else:
-            print("I don't understand what you are trying to do. Please try again.")
 
 
-        if(debug_mode):	
-            print()
-            print("RAW USER COMANDS: " + raw_input)
-            print("PARSED USER COMMANDS: " + str(parsed_input))
+            if(debug_mode):	
+                print()
+                print("RAW USER COMMANDS: " + raw_input)
+                print("PARSED USER COMMANDS: " + str(parsed_input))
 #for word in parsed_input:
 #	if(word):
 #		print(word + " ")
 #	else:
 #		print("None")
-    else:
-        print("Something seems to have gone wrong. Please try again.")
+        else:
+            print("Something seems to have gone wrong. Please try again.")
 
 
 
