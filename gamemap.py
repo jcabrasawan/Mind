@@ -76,11 +76,11 @@ class DustTile(MapTile):
         '''
 
 world_map = [
-    [DustTile(0,0) , KnifeWallTile(1,0) , WallTile(2,0) , WallTile(3,0), KnifeWallTile(4,0) , WallTile(5,0)]
-    [WallTile(0,1) , NothingTile(1,1) , LampTile(2,1) , TableTile(3,1) , NothingTile(4,1) , WallTile(5,1)]
-    [DustTile(0,2), NothingTile(1,2), NothingTile(2,2), NothingTile(3,2), NothingTile(4,2), DustTile(5,2)]
-    [WallTile(0,3), NothingTile(1,3), StartTile(2,3), NothingTile(3,3), NothingTile(4,3), ChairTile(5,3)]
-    [ShelfTile(0,4), WallTile(1,4), WallTile(2,4), DustTile(3,4), WallTile(4,4), KnifeWallTile(5,4)]
+    [DustTile() , KnifeWallTile() , WallTile() , WallTile(), KnifeWallTile() , WallTile()]
+    [WallTile() , NothingTile() , LampTile() , TableTile() , NothingTile() , WallTile()]
+    [DustTile(), NothingTile(), NothingTile(), NothingTile(), NothingTile(), DustTile()]
+    [WallTile(), NothingTile(), StartTile(), NothingTile(), NothingTile(), ChairTile()]
+    [ShelfTile(), WallTile(), WallTile(), DustTile(), WallTile(), KnifeWallTile()]
 ]
 
 def tile_at(x,y):

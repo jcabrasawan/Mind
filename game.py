@@ -2,7 +2,7 @@ from player import Player
 import gamemap
 
 def play():
-    print("understand.")
+    print("test")
     player = Player()
     while True:
         room = world.tile_at(player.x, player.y)
