@@ -14,7 +14,7 @@ verbs = {'go': ['go', 'go to', 'walk', 'head', 'move'], \
 	'unequip': ['unequip', 'take off', 'remove'], \
 	'use': ['use', 'apply'], \
 	'check': ['check', 'look', 'examine', 'inspect'], \
-	'attack': ['attack', 'fight', 'kill']}
+	}
 	
 prepositions = ["with", "to", "on", "from", "at"]
 
