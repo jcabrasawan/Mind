@@ -2,6 +2,7 @@ import items
 
 class Player:
     def __init__(self):
+        self.inventory = []
         self.x = 2
         self.y = 3
 

@@ -13,27 +13,27 @@ class Book(Item):
     def __str__(self):
         return self.description
 
-class Table(Item):
-    def __init__(self):
-        self.name= "A reading table."
-        self.description = "A dusty old table."\
-                           "It looks worn down."
-    def __str__(self):
-        return self.description
+#class Table(Item):
+ #   def __init__(self):
+ #       self.name= "A reading table."
+ #       self.description = "A dusty old table."\
+ #                          "It looks worn down."
+ #   def __str__(self):
+ #      return self.description
     
-class Chair(Item):
-    def __init__(self):
-        self.name = "An uncomfortable chair."
-        self.description = "This chair looks stiff and uncomfortable."\
-                           "You doubt it can take your weight and decide not to attempt"\
-                           "sitting on it."
-    def __str__(self):
-        return self.description
+#class Chair(Item):
+ #   def __init__(self):
+ #       self.name = "An uncomfortable chair."
+ #       self.description = "This chair looks stiff and uncomfortable."\
+ #                          "You doubt it can take your weight and decide not to attempt"\
+ #                          "sitting on it."
+ #   def __str__(self):
+ #       return self.description
 
 inventory = ['Nothing']
 
 def play():
-    print('understand.')
+    print('test')
     print("INVENTORY: ")
     print (inventory)
 

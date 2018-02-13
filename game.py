@@ -46,7 +46,7 @@ def print_wrap(text):
 
 def play():
     clear_screen()
-    print_wrap("Welcome to %s!" % game_name)
+    print_wrap("Welcome to %s." % game_name)
     player = Player()
     world = World()
     print_wrap(world.tile_at(player.x,player.y).intro_text())
